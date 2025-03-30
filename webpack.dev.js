@@ -1,12 +1,13 @@
-const path = require('path');
 const webpack = require('webpack');
+const path = require('path');
 const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
+// const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
 
 const port = 3000;
 let publicUrl = `ws://localhost:${port}/ws`;
 
-//only for gitpod
+//only for github
 if(process.env.GITPOD_WORKSPACE_URL){
   const [schema, host] = process.env.GITPOD_WORKSPACE_URL.split('://');
   publicUrl = `wss://${port}-${host}/ws`;
@@ -14,7 +15,7 @@ if(process.env.GITPOD_WORKSPACE_URL){
 
 //only for codespaces
 if(process.env.CODESPACE_NAME){
-  publicUrl = `wss://${process.env.CODESPACE_NAME}-${port}.preview.app.github.dev/ws`;
+  publicUrl = `wss://${process.env.CODESPACE_NAME}-${port}.app.github.dev/ws`;
 }
 
 module.exports = merge(common, {
@@ -32,5 +33,20 @@ module.exports = merge(common, {
           webSocketURL: publicUrl
         },
     },
-    plugins: []
+    plugins: [
+        // new FriendlyErrorsWebpackPlugin(),
+        // new ErrorOverlayPlugin(),
+        // new PrettierPlugin({
+        //     parser: "babylon",
+        //     printWidth: 120,             // Specify the length of line that the printer will wrap on.
+        //     tabWidth: 4,                // Specify the number of spaces per indentation-level.
+        //     useTabs: true,              // Indent lines with tabs instead of spaces.
+        //     bracketSpacing: true,
+        //     extensions: [ ".js", ".jsx" ],
+        //     jsxBracketSameLine: true,
+        //     semi: true,                 // Print semicolons at the ends of statements.
+        //     encoding: 'utf-8'           // Which encoding scheme to use on files
+        // }),
+        new webpack.HotModuleReplacementPlugin()
+    ]
 });

@@ -5,7 +5,7 @@ const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: [
-    './src/js/index.js'
+    './src/front/js/index.js'
   ],
   output: {
     filename: 'bundle.js',
@@ -20,7 +20,7 @@ module.exports = {
           use: ['babel-loader']
         },
         {
-          test: /\.(css)$/, use: [{
+          test: /\.(css|scss)$/, use: [{
               loader: "style-loader" // creates style nodes from JS strings
           }, {
               loader: "css-loader" // translates CSS into CommonJS

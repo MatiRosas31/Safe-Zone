@@ -4,11 +4,20 @@
 # track this file .gitignore (i.e. do NOT ignore it)
 !.gitignore
 !.github
-!.vscode
 php_errorlog
 .log
 
-# track this file .gitignore (i.e. do NOT ignore it)
+# do not ignore gitpod and render files
+!.gitpod.Dockerfile
+!.welcome
+!.devcontainer
+!.devcontainer/*
+!Dockerfile.render
+!.gitpod.yml
+!render.yml
+!.render-buildpacks.json
+
+# track webpack configs (i.e. do NOT ignore it)
 !composer.json
 !webpack.config.js
 !package.json
@@ -53,15 +62,21 @@ Thumbs.db
 # ignore node/grunt dependency directories
 node_modules/
 
-public/
+# webpack output
+dist/*
+!public/
+!public/*
 
 # ignore the dist directory were our bundle files are going to be
 !.gitkeep
-!.devcontainer
-!.devcontainer/*
-!.gitpod.yml
 !.htaccess
 !.eslintrc
 !.env.example
 .now
-.vercel
+
+# backend stuff
+.venv
+database.database
+database.db
+diagram.png
+__pycache__/
