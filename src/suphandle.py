@@ -10,6 +10,9 @@ key = os.environ.get("SUPABASE_KEY")
 
 supabase = create_client(url, key)
 
+#pipenv run start
+#python .\Safe-Zone\src\suphandle.py
+
 # Tareas:
 # 1. Hacer una verificacion para ver corroborar si alguno de los datos YA existe en la tabla. Osea si ya existe una noticia con el mismo 'title' y 'location'.
 # 2. Si existe, no la inserta. Si no existe, la inserta.
@@ -21,6 +24,7 @@ supabase = create_client(url, key)
 #   - Endpoint para eliminar eventos por ID
 #   - Endpoint para actualizar eventos por ID
 #   - Endpoint para agregar eventos desde el front (se deberan hacer algunas validaciones de datos antes de enviar)
+# Se puede usar flask para los endpoints:
 
 
 # test_event = {
